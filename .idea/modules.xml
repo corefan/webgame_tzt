@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Engine.iml" filepath="$PROJECT_DIR$/Engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Analyse/Engine-Analyse.iml" filepath="$PROJECT_DIR$/Component/Engine-Analyse/Engine-Analyse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Engine-Commons/Engine-Commons.iml" filepath="$PROJECT_DIR$/Engine-Commons/Engine-Commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Engine-Core/Engine-Core.iml" filepath="$PROJECT_DIR$/Engine-Core/Engine-Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Engine-Database/Engine-Database.iml" filepath="$PROJECT_DIR$/Engine-Database/Engine-Database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Fight/Engine-Fight.iml" filepath="$PROJECT_DIR$/Component/Engine-Fight/Engine-Fight.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-GMCC/Engine-GMCC.iml" filepath="$PROJECT_DIR$/Component/Engine-GMCC/Engine-GMCC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Engine-Gate/Engine-Gate.iml" filepath="$PROJECT_DIR$/Engine-Gate/Engine-Gate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Engine-List/Engine-List.iml" filepath="$PROJECT_DIR$/Engine-List/Engine-List.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Login/Engine-Login.iml" filepath="$PROJECT_DIR$/Component/Engine-Login/Engine-Login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Mail/Engine-Mail.iml" filepath="$PROJECT_DIR$/Component/Engine-Mail/Engine-Mail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Monitor/Engine-Monitor.iml" filepath="$PROJECT_DIR$/Component/Engine-Monitor/Engine-Monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Pack/Engine-Pack.iml" filepath="$PROJECT_DIR$/Component/Engine-Pack/Engine-Pack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Scene/Engine-Scene.iml" filepath="$PROJECT_DIR$/Component/Engine-Scene/Engine-Scene.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/Engine-Scene-RTS/Engine-Scene-RTS.iml" filepath="$PROJECT_DIR$/Component/Engine-Scene-RTS/Engine-Scene-RTS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tool/Engine-Unite/Engine-Unite.iml" filepath="$PROJECT_DIR$/Tool/Engine-Unite/Engine-Unite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Component/component.iml" filepath="$PROJECT_DIR$/Component/component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tool/tool.iml" filepath="$PROJECT_DIR$/Tool/tool.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <chat-num>50</chat-num><!--聊天字数限制-->
+  <world-chat-interval>60</world-chat-interval><!--世界聊天时间间隔-->
+  <nip-chat-interval>20</nip-chat-interval><!--新手辅导时间间隔-->
+  <chatContentLog>0</chatContentLog><!--1-记录聊天日志 0-不记录聊天日志-->
+  <world-type>1</world-type><!-- 聊天字类型 1-中国 2-北美-->
+ </config>

@@ -1,0 +1,8 @@
+<config>
+	<log4j-path>/log4j.properties</log4j-path>
+	<db-url-templete>
+		<sqlserver>jdbc:sqlserver://{ip}:{port};SelectMethod=Cursor;DatabaseName={database}</sqlserver>
+		<mysql>jdbc:mysql://{ip}:{port}/{database}</mysql>
+		<oracle>jdbc:oracle:thin:@{ip}:{port}:{database}</oracle>
+	</db-url-templete>
+</config>

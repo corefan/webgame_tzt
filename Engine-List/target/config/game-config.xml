@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <log4j-path>/config/log4j.properties</log4j-path>
+  <server-name>ListServer</server-name>
+  <gameType>12</gameType><!-- 游戏类型 -->
+  <game-vendorId>7</game-vendorId><!-- 运营商编号 -->
+   <list>
+ 	<name>帝国文明发布版</name>
+ 	<server-id>1202</server-id><!-- 分区ID -->
+ </list> 
+
+ <list>
+ 	<name>内部开发版</name>
+ 	<server-id>1203</server-id><!-- 分区ID -->
+ </list> 
+ 	<!-- flash用的策略文件 -->
+	<flash-domain>
+		<domain>*</domain>
+		<port>*</port>
+	</flash-domain>
+</config>
+

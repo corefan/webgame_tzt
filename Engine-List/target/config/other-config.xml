@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <validate-flag>0</validate-flag><!--游戏是否验证 0-不验证 1-验证-->
+  <client-key>/config/crypto</client-key> <!-- 客户端key文件路径-->
+ </config>

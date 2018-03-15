@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <log4j-path>/config/log4j.properties</log4j-path>
+  <server-name>GameServer</server-name>
+  <gameType>12</gameType><!-- 游戏类型 -->
+  <game-server-id>1203</game-server-id><!-- 游戏服务器ID -->
+  <game-server-name>页游引擎测试(172.19.10.26)</game-server-name><!-- 游戏服务器名称-->
+  <tool-ip>192.168.6.23</tool-ip>
+  <tool-port>9000</tool-port>
+  <gmcc-ip>192.168.1.16</gmcc-ip>
+  <gmcc-port>5000</gmcc-port>
+  <monitor-id>Nx_Server_1_0</monitor-id>
+  <monitor-ip>192.168.1.193</monitor-ip>
+  <monitor-port>7001</monitor-port>
+
+</config>

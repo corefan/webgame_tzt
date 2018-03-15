@@ -1,0 +1,87 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.snail.webgame.engine.commons</groupId>
+	<artifactId>Engine-Commons</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<name>引擎公共服务</name>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j.impl</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		<dependency>
+  			<groupId>org.critterai.nav</groupId>
+ 			 <artifactId>cai-nav</artifactId>
+  			<version>0.1.2</version>
+		</dependency>
+		<dependency>
+			  <groupId>org.critterai.nav</groupId>
+			  <artifactId>cai-nav</artifactId>
+			  <version>0.1.2</version>
+			  <classifier>sources</classifier>
+		</dependency>
+		<dependency>
+ 			<groupId>org.critterai.math</groupId>
+  			<artifactId>cai-util</artifactId>
+  			<version>0.1.1</version>
+		</dependency>
+		<dependency>
+ 			<groupId>org.critterai.math</groupId>
+  			<artifactId>cai-util</artifactId>
+  			<version>0.1.1</version>
+  			<classifier>sources</classifier>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://10.104.2.65:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://10.104.2.65:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

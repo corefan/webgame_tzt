@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	 
+	
+<!-- 整个消息的长度是4个字节是Int型 length表示该字段后的消息长度 -->
+<!-- 协议长度的 length的字节型必须注明 0(big-endian) 1(little-endian),不可缺少-->
+<!-- 协议头中必须存在 协议标识 -->
+<!-- 设置消息头协议字段顺序中,必须有一个字段是Length 如果没有协议字段顺序,length从第0个索引开始 -->
+<!-- 当消息头中的class不存在时,消息将转入<accept-handle>的配置类或者默认类处理-->
+<!-- 当消息不存在消息头时,<filter>将失效,必须配置<accept-handle>-->
+	<protocols>
+		<head class="com.snail.webgame.engine.component.scene.common.GameMessageHead" length-endian="0" name="SceneServer-1"></head>
+		<head class="com.snail.webgame.engine.component.scene.common.GameMessageHead" length-endian="0" name="GameServer"></head>
+		
+		
+		
+		
+	 	<protocol-processors>
+	 	
+	 		<!-- 游戏服务器间连接维护 -->
+			<processor-mapping>
+				<protocolId>0xfffE</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.server.active.ServerActiveReq</message-body>
+				<processor>com.snail.webgame.engine.component.scene.protocal.server.active.ServerActiveProcessor</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+	 	
+
+			<processor-mapping>
+				<protocolId>0xff09</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.queue.GetArmyQueueReq</message-body>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xff10</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.sys.sys.SysReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.queue.GetArmyQueueProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>fightPool</usedTreadPool>
+			</processor-mapping>
+
+
+			<!-- 用户退出 -->
+			 <processor-mapping>
+				<protocolId>0xA010</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.rolemgt.logout.UserLogoutResp</message-body>
+				<processor>com.snail.webgame.engine.component.scene.protocal.rolemgt.logout.UserLogoutProcessor</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>	
+			
+			
+			
+			<!-- 进入战斗场景 -->
+			<processor-mapping>
+				<protocolId>0xB051</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.in.RoleInFightReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.in.RoleInFightProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>		
+ 			<processor-mapping>
+				<protocolId>0xB052</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.in.RoleInFightResp</message-body>
+			</processor-mapping>	
+			 		
+			 <!-- 退出战斗场景 -->
+			<processor-mapping>
+				<protocolId>0xB053</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.out.RoleOutFightReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.out.RoleOutFightProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB054</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.in.RoleInFightResp</message-body>
+			</processor-mapping>
+			
+			
+			
+			 
+			<!-- 方阵移动 -->
+			<processor-mapping>
+				<protocolId>0xB056</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.move.PhalanxMoveReq</message-body>
+			</processor-mapping> 		
+			 		
+			<!-- 方阵攻击 -->
+			<processor-mapping>
+				<protocolId>0xB058</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.attack.PhalanxAttackReq</message-body>
+			</processor-mapping>  		
+			 
+			 <!-- 客户端控制部队移动 -->
+			 		
+			 <processor-mapping>
+				<protocolId>0xB059</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.control.ControlReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.control.ControlProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>  		
+			 <processor-mapping>
+				<protocolId>0xB060</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.control.ControlResp</message-body>
+			</processor-mapping>  		
+			
+			
+			<!-- 方阵遭受攻击 -->
+			<processor-mapping>
+				<protocolId>0xB065</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.defend.PhalanxDefendReq</message-body>
+			</processor-mapping>  
+
+			<!-- 刷新双方士气 -->
+			<processor-mapping>
+				<protocolId>0xB066</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.tire.RefreshMoraleReq</message-body>
+			</processor-mapping>  
+
+
+			<!-- 部队停止 -->
+			<processor-mapping>
+				<protocolId>0xB067</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.stop.PhalanxStopReq</message-body>
+			</processor-mapping>  
+
+			<!-- 部队控制-->
+			<processor-mapping>
+				<protocolId>0xB068</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.manual.ManualReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.manual.ManualProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>  
+
+			<!-- 部队buff -->
+			<processor-mapping>
+				<protocolId>0xB069</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.buff.BuffReq</message-body>
+			</processor-mapping>
+
+
+			<!-- 战场使用道具 -->
+			<processor-mapping>
+				<protocolId>0xB071</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.prop.UsePropReq</message-body>
+				<processor value="com.snail.webgame.engine.component.scene.protocal.fight.prop.UsePropProcessor">
+					<property name="fightMgtService" value="com.snail.webgame.engine.component.scene.protocal.fight.service.FightMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xB072</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.prop.UsePropResp</message-body>
+			</processor-mapping>  
+
+			<!-- 战场方阵变化-->
+			<processor-mapping>
+				<protocolId>0xB073</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.propeffect.PropEffectReq</message-body>
+			</processor-mapping>
+			
+			<!--中途加入失败提醒-->
+			 <processor-mapping>
+				<protocolId>0xB08C</protocolId>
+				<message-body>com.snail.webgame.engine.component.scene.protocal.fight.joinqueue.JoinArmyQueueResp</message-body>
+			</processor-mapping>
+
+		</protocol-processors>
+	</protocols>
+	
+	<resources>
+		<class-resource name="code" parameter="com.snail.webgame.engine.component.scene.util.HandleStr"/>
+		<class-resource name="flashCode" parameter="com.snail.webgame.engine.component.scene.util.FlashHandleStr"/>
+		<message-resource key="fight" parameter="/config/gameserver.properties"/>
+	</resources>
+</config>

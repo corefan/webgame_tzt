@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<environments default="development">
+		<environment id="GAME_DB">
+			<transactionManager type="JDBC" />
+			<dataSource type="com.snail.webgame.engine.db.factory.ProxoolDataSourceFactory">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="driverUrl" value="jdbc:mysql://10.101.2.14:3306/Engine_demo?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+				<property name="user" value="root" />
+				<property name="password" value="123456" />
+				<property name="houseKeepingSleepTime" value="30000" />
+				<property name="houseKeepingTestSql" value="select 1" />
+				<property name="maximumConnectionCount" value="150" />
+				<property name="minimumConnectionCount" value="15" />
+				<property name="maximumActiveTime" value="150000" />
+				<property name="prototypeCount" value="5" />
+				<property name="statistics" value="10s,1m" />
+				<property name="statisticsLogLevel" value="WARN" />
+			</dataSource>
+		</environment>
+<!-- 		<environment id="GAME_LOG_DB"> -->
+<!-- 			<transactionManager type="JDBC" /> -->
+<!-- 			<dataSource type="com.snail.webgame.engine.db.factory.ProxoolDataSourceFactory"> -->
+<!-- 				<property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /> -->
+<!-- 				<property name="driverUrl" value="jdbc:sqlserver://192.168.6.244:1433;SelectMethod=Cursor;DatabaseName=EmpireLogDB_121" /> -->
+<!-- 				<property name="user" value="GAME_ADMIN" /> -->
+<!-- 				<property name="password" value="123456" /> -->
+<!-- 				<property name="houseKeepingSleepTime" value="30000" /> -->
+<!-- 				<property name="houseKeepingTestSql" value="select 1" /> -->
+<!-- 				<property name="maximumConnectionCount" value="20" /> -->
+<!-- 				<property name="minimumConnectionCount" value="15" /> -->
+<!-- 				<property name="maximumActiveTime" value="150000" /> -->
+<!-- 			</dataSource> -->
+<!-- 		</environment> -->
+	</environments>
+	<mappers>
+		<mapper resource="config/dao/Role.xml" />
+		<mapper resource="config/dao/MailList.xml" />
+	</mappers>
+</configuration>

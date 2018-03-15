@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<io-service>
+		<socket-threads>1</socket-threads> <!--socket处理线程数，一般设置与CUP数量一致  -->
+		<service-acceptor>
+			<service-name>GameServer</service-name><!-- 服务名称 -->
+			<local-host>172.19.10.26</local-host><!--远程服务器--> 
+			<local-port>7001</local-port><!--正常通讯监听端口-->
+			<service-filters>
+				<filter name = "codec"  type="code" class="org.epilot.ccf.filter.ProtocolCodecFilter"/> 
+				<filter name = "threadPoolRead"  class="org.epilot.ccf.filter.ExecutorFilterReceive"/><!-- 线程池 -->	
+				<filter name = "messagecodec"  type="code" class="org.epilot.ccf.filter.MessageCodecFilter" />
+			</service-filters>
+			<service-handle></service-handle><!-- 发送接收处理器 -->
+			<session-handle>com.snail.webgame.engine.component.login.SessionHandleImpl</session-handle><!-- 连接维护处理类 -->
+		</service-acceptor>
+		<service-send>
+			<service-name>ChargeServer</service-name><!-- 服务名称 -->
+			<remote-host>61.155.156.134</remote-host><!--远程服务器--> 
+			<remote-port>6012</remote-port><!--正常通讯监听端口-->
+			<service-filters>
+				<filter name = "codec"  type="code" class="org.epilot.ccf.filter.ProtocolCodecFilter"/> 
+				<filter name = "threadPool"  class="org.epilot.ccf.filter.ExecutorFilter"/><!-- 线程池 -->	
+				<filter name = "messagecodec" type="code" class="org.epilot.ccf.filter.MessageCodecFilter" />
+		  </service-filters>
+			<service-handle></service-handle><!-- 发送接收处理器 -->
+			<session-handle>com.snail.webgame.engine.component.login.SessionHandleImpl</session-handle><!-- 连接维护处理类 -->
+		</service-send>
+	</io-service>
+
+	<socket-option>
+		<SocketReceiveBuffer>204800</SocketReceiveBuffer>
+		<SocketSendBuffer>204800</SocketSendBuffer>
+		<KeepAlive>true</KeepAlive>
+		<TcpNoDelay>false</TcpNoDelay>
+		<IdleTime><!-- session超时 -->
+			<state>0</state><!--0（不超时） 1(READER_IDLE),2(WRITER_IDLE),3(BOTH_IDLE) -->
+			<Timeout>30</Timeout><!--(秒)-->
+		</IdleTime>
+	</socket-option>
+	
+ 	<!-- flash用的策略文件 -->
+	<flash-domain>
+		<domain>*</domain>
+		<port>*</port>
+	</flash-domain>
+	
+</config>

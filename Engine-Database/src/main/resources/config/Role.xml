@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.snail.db">
+	
+	
+	<resultMap id="userResultMap" type="com.snail.webgame.engine.db.test.info.RoleTO">
+		<id property="id" column="N_ID" />
+		<result property="name" column="S_ROLE_NAME"/>
+		<result property="level" column="N_ROLE_LEVEL"/>
+		<association property="detailTO" javaType="com.snail.webgame.engine.db.test.info.DetailTO">
+			<id property="id" column="detail_ID" />
+		<result property="detail" column="S_DETAIL"/>
+		</association>
+	</resultMap>
+
+	<select id="selectRole" parameterType="com.snail.webgame.engine.db.test.info.RoleTO" resultType="com.snail.webgame.engine.db.test.info.RoleTO" resultMap="userResultMap">
+		select A.s_role_name, A.n_role_level, A.n_id, B.n_id as detail_id, B.s_detail from A, B where A.n_id = #{id} and A.n_id = B.n_role_id
+	</select>
+	<select id="selectRoleAll" resultType="com.snail.webgame.engine.db.test.info.RoleTO" resultMap="userResultMap">
+		select A.s_role_name, A.n_role_level, A.n_id, B.n_id as detail_id, B.s_detail from A, B where A.n_id = B.n_role_id
+	</select>
+	
+	<insert id="insertRole" parameterType="com.snail.webgame.engine.db.test.info.RoleTO" useGeneratedKeys="true" keyProperty="id"> <!-- useGeneratedKeys="true" keyProperty="id" -->
+		
+		insert into A(s_role_name, n_role_level) values(#{name}, #{level});
+		
+	</insert>
+	
+	<insert id="insertRoleDetail" parameterType="com.snail.webgame.engine.db.test.info.RoleTO" useGeneratedKeys="true" keyProperty="detailTO.id">
+		insert into B(s_detail, n_role_id) values(#{detailTO.detail}, #{id});
+	</insert>
+	
+	<update id="updateRole" parameterType="com.snail.webgame.engine.db.test.info.RoleTO">
+		update A set s_role_name = #{name}, n_role_level = #{level} where n_id = #{id}
+	</update>
+	<update id="updateRoleDetail" parameterType="com.snail.webgame.engine.db.test.info.DetailTO">
+		update B set s_detail = #{detail} where n_id = #{id}
+	</update>
+	
+	<delete id="deleteRole" parameterType="com.snail.webgame.engine.db.test.info.RoleTO">
+		delete from A where n_id = #{id}
+		delete from B where n_role_id = #{id}
+	</delete>
+</mapper>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<pools>   
+ <pool>
+	<poolName>webgame</poolName><!-- 线程池名称 -->
+	<minThreads>10</minThreads><!-- 最小线程数目 -->
+	<maxThreads>200</maxThreads><!-- 最大线程数目-->
+	<keepAlive>60</keepAlive><!-- 线程存活时间(秒) -->
+	<queueType>1</queueType><!-- 队列类型 1:LinkedBlockingQueue 2:SynchronousQueue  -->
+	<maxQueues>200</maxQueues><!-- 队列最大数 (空为Integer.MAX_VALUE)-->
+	<priority>5</priority><!-- 优先级 -->
+ </pool> 
+   <pool>
+	<poolName>sendPool</poolName><!-- 线程池名称 -->
+	<minThreads>10</minThreads><!-- 最小线程数目 -->
+	<maxThreads>50</maxThreads><!-- 最大线程数目-->
+	<keepAlive>60</keepAlive><!-- 线程存活时间(秒) -->
+	<queueType>1</queueType><!-- 队列类型 1:LinkedBlockingQueue 2:SynchronousQueue  -->
+	<maxQueues>100</maxQueues><!-- 队列最大数 (空为Integer.MAX_VALUE)-->
+	<priority>5</priority><!-- 优先级 -->
+ </pool> 
+   <pool>
+	<poolName>receivePool</poolName><!-- 线程池名称 -->
+	<minThreads>10</minThreads><!-- 最小线程数目 -->
+	<maxThreads>50</maxThreads><!-- 最大线程数目-->
+	<keepAlive>60</keepAlive><!-- 线程存活时间(秒) -->
+	<queueType>1</queueType><!-- 队列类型 1:LinkedBlockingQueue 2:SynchronousQueue  -->
+	<maxQueues>100</maxQueues><!-- 队列最大数 (空为Integer.MAX_VALUE)-->
+	<priority>5</priority><!-- 优先级 -->
+ </pool> 
+</pools>
+

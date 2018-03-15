@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SceneId: 当前场景服务器ID
+MapId: 当前地图ID
+ToMapId: 传送地图ID
+ToSceneId: 传送场景服务器ID
+
+-->
+<MapDoor NO="" Name="">
+	<Property No="1" Name="1" SceneId="1" MapId="Map001" MinX="112" MaxX="116" MinY="20" MaxY="30" MinZ="38" MaxZ="42" ToMapId="Map001" ToSceneId="2" ToX="106" ToY="25" ToZ="46"/>
+	<Property No="2" Name="2" SceneId="2" MapId="Map001" MinX="112" MaxX="116" MinY="20" MaxY="30" MinZ="38" MaxZ="42" ToMapId="Map001" ToSceneId="1" ToX="106" ToY="25" ToZ="46"/>
+</MapDoor>

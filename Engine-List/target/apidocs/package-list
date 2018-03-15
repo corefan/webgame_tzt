@@ -1,0 +1,12 @@
+com.snail.webgame.game.cache
+com.snail.webgame.game.charge.service
+com.snail.webgame.game.charge.validate
+com.snail.webgame.game.common
+com.snail.webgame.game.config
+com.snail.webgame.game.gameclient.active
+com.snail.webgame.game.gamerole.protocal.login
+com.snail.webgame.game.gamerole.service
+com.snail.webgame.game.gatemgt.protocal.active
+com.snail.webgame.game.gatemgt.service
+com.snail.webgame.game.main
+com.snail.webgame.game.util

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>  
+  <pool>
+  		<name>FROM_DB</name>
+  		<driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClassName>
+  		<url>jdbc:sqlserver://192.168.6.244:1433;SelectMethod=Cursor;DatabaseName=EmpireDB_121</url>
+  		<username>GAME_ADMIN</username>
+  		<password>123456</password>
+  		<initialSize>0</initialSize>
+  		<maxActive>150</maxActive>
+  		<maxIdle>150</maxIdle>
+  		<minIdle>0</minIdle>
+  		<maxWait>-1</maxWait>
+  		<validationQuery>select 1</validationQuery>
+  		<testOnBorrow>true</testOnBorrow>
+  		<testOnReturn>false</testOnReturn>
+  		<testWhileIdle>false</testWhileIdle> 
+  		<timeBetweenEvictionRunsMillis>60000</timeBetweenEvictionRunsMillis>
+  		<numTestsPerEvictionRun>-2</numTestsPerEvictionRun>
+  		<minEvictableIdleTimeMillis>120000</minEvictableIdleTimeMillis>		
+  		<logAbandoned>false</logAbandoned>
+  </pool>
+   <pool>
+  		<name>FROM_LOG_DB</name>
+  		<driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClassName>
+  		<url>jdbc:sqlserver://192.168.6.244:1433;SelectMethod=Cursor;DatabaseName=EmpireLogDB_121</url>
+  		<username>GAME_ADMIN</username>
+  		<password>123456</password>
+  		<initialSize>0</initialSize>
+  		<maxActive>150</maxActive>
+  		<maxIdle>150</maxIdle>
+  		<minIdle>0</minIdle>
+  		<maxWait>-1</maxWait>
+  		<validationQuery>select 1</validationQuery>
+  		<testOnBorrow>true</testOnBorrow>
+  		<testOnReturn>false</testOnReturn>
+  		<testWhileIdle>false</testWhileIdle> 
+  		<timeBetweenEvictionRunsMillis>60000</timeBetweenEvictionRunsMillis>
+  		<numTestsPerEvictionRun>-2</numTestsPerEvictionRun>
+  		<minEvictableIdleTimeMillis>120000</minEvictableIdleTimeMillis>		
+  		<logAbandoned>false</logAbandoned>
+  </pool>
+  <pool>
+  		<name>GOTO_DB</name>
+  		<driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClassName>
+  		<url>jdbc:sqlserver://192.168.6.244:1433;SelectMethod=Cursor;DatabaseName=EmpireDB_121_Unite</url>
+  		<username>GAME_ADMIN</username>
+  		<password>123456</password>
+  		<initialSize>0</initialSize>
+  		<maxActive>150</maxActive>
+  		<maxIdle>150</maxIdle>
+  		<minIdle>0</minIdle>
+  		<maxWait>-1</maxWait>
+  		<validationQuery>select 1</validationQuery>
+  		<testOnBorrow>true</testOnBorrow>
+  		<testOnReturn>false</testOnReturn>
+  		<testWhileIdle>false</testWhileIdle> 
+  		<timeBetweenEvictionRunsMillis>60000</timeBetweenEvictionRunsMillis>
+  		<numTestsPerEvictionRun>-2</numTestsPerEvictionRun>
+  		<minEvictableIdleTimeMillis>120000</minEvictableIdleTimeMillis>		
+  		<logAbandoned>false</logAbandoned>
+  </pool>
+   <pool>
+  		<name>GOTO_LOG_DB</name>
+  		<driverClassName>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClassName>
+  		<url>jdbc:sqlserver://192.168.6.244:1433;SelectMethod=Cursor;DatabaseName=EmpireLogDB_121_Unite</url>
+  		<username>GAME_ADMIN</username>
+  		<password>123456</password>
+  		<initialSize>0</initialSize>
+  		<maxActive>150</maxActive>
+  		<maxIdle>150</maxIdle>
+  		<minIdle>0</minIdle>
+  		<maxWait>-1</maxWait>
+  		<validationQuery>select 1</validationQuery>
+  		<testOnBorrow>true</testOnBorrow>
+  		<testOnReturn>false</testOnReturn>
+  		<testWhileIdle>false</testWhileIdle> 
+  		<timeBetweenEvictionRunsMillis>60000</timeBetweenEvictionRunsMillis>
+  		<numTestsPerEvictionRun>-2</numTestsPerEvictionRun>
+  		<minEvictableIdleTimeMillis>120000</minEvictableIdleTimeMillis>		
+  		<logAbandoned>false</logAbandoned>
+  </pool>
+</config>

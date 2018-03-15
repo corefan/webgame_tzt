@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="">
+	
+	<resultMap id="quickBarResultMap" type="com.snail.webgame.engine.common.info.QuickBarInfo">
+		<id property="id" column="N_ID" />
+		<result property="quickBarNo" column="N_QUICK_BAR_NO"/>
+		<result property="packSort" column="N_PACK_SORT"/>
+		<result property="girdNo" column="N_GIRD_NO"/>
+		<result property="roleId" column="N_ROLE_ID"/>
+	</resultMap>
+	
+	<select id="selectQuickBarByRoleId" parameterType="com.snail.webgame.engine.common.info.QuickBarInfo" 
+			resultType="com.snail.webgame.engine.common.info.QuickBarInfo" resultMap="quickBarResultMap">
+		select * from GAME_QUICK_BAR where N_ROLE_ID = #{roleId}
+	</select>
+	
+	<insert id="insertQuickBar" parameterType="com.snail.webgame.engine.common.info.QuickBarInfo" 
+			useGeneratedKeys="true" keyProperty="id">
+		insert into GAME_QUICK_BAR(N_QUICK_BAR_NO, N_PACK_SORT, N_GIRD_NO, N_ROLE_ID) 
+				values(#{quickBarNo}, #{packSort}, #{girdNo}, #{roleId});
+	</insert>
+	
+	<insert id="insertQuickBarBatch" parameterType="java.util.List" 
+			useGeneratedKeys="true">
+  		insert into GAME_QUICK_BAR(N_QUICK_BAR_NO, N_PACK_SORT, N_GIRD_NO, N_ROLE_ID) values
+  		<foreach collection="list" item="item" index="index" separator=",">
+  			( #{item.quickBarNo}, #{item.packSort}, #{item.girdNo}, #{item.roleId})
+  		</foreach>
+  	</insert>
+	
+	<delete id="deleteQuickBarBatch" parameterType="java.util.List">
+  		delete from GAME_QUICK_BAR WHERE N_ID IN
+  		<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+  			#{item.id}
+  		</foreach>
+  	</delete>
+  	
+  	<update id="updateQuickBar" parameterType="com.snail.webgame.engine.common.info.QuickBarInfo" >
+  		UPDATE GAME_QUICK_BAR SET 
+  			N_QUICK_BAR_NO = #{quickBarNo},
+  			N_PACK_SORT = #{packSort}, 
+  			N_GIRD_NO = #{girdNo}, 
+  			N_ROLE_ID = #{roleId}
+  		WHERE N_ID = #{id}
+  	</update>
+	
+</mapper>

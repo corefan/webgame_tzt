@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	
+<!-- 整个消息的长度是4个字节是Int型 length表示该字段后的消息长度 -->
+<!-- 协议长度的 length的字节型必须注明 0(big-endian) 1(little-endian),不可缺少-->
+<!-- 协议头中必须存在 协议标识 -->
+<!-- 设置消息头协议字段顺序中,必须有一个字段是Length 如果没有协议字段顺序,length从第0个索引开始 -->
+<!-- 当消息头中的class不存在时,消息将转入<accept-handle>的配置类或者默认类处理-->
+<!-- 当消息不存在消息头时,<filter>将失效,必须配置<accept-handle>-->
+	<protocols>
+		<head class="com.snail.webgame.game.common.GameMessageHead" length-endian="0" name="ListServer"></head>
+		<head class="com.snail.webgame.game.common.ChargeMessageHead" length-endian="1" name="ChargeServer"></head>
+		
+		
+		<protocol-processors>
+		
+		
+			<!-- 用户验证 不登录 -->
+			<processor-mapping>
+				<protocolId>0xA001</protocolId>
+				<message-body>com.snail.webgame.game.gamerole.protocal.login.UserLoginReq</message-body>
+				<processor>com.snail.webgame.game.gamerole.protocal.login.UserLoginProcessor</processor>
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xA002</protocolId>
+				<message-body>com.snail.webgame.game.gamerole.protocal.login.UserLoginResp</message-body>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+			 
+			
+			<!--客户端服务器连接维护-->
+			<processor-mapping>
+				<protocolId>0xffff</protocolId>
+				<processor>com.snail.webgame.game.gameclient.active.GameActiveProcessor</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+ 			
+			<!--通讯服务器报告在线人数-->
+			<processor-mapping>
+				<protocolId>0xfffD</protocolId>
+				<message-body>com.snail.webgame.game.gatemgt.protocal.active.ActiveReq</message-body>
+				<processor>com.snail.webgame.game.gatemgt.protocal.active.ActiveProcessor</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+ 
+ 
+	 		
+	 	    <!-- 与计费应用通讯  -->
+
+			<processor-mapping>
+				<protocolId>0x3000</protocolId>
+				<message-body>com.snail.webgame.game.charge.validate.VerifyAccountReq</message-body>
+	 		</processor-mapping> 		
+			<processor-mapping>
+				<protocolId>0x3001</protocolId>
+				<message-body>com.snail.webgame.game.charge.validate.VerfiyAccountResp</message-body>
+				<processor>com.snail.webgame.game.charge.validate.VerfiyAccountProcessor</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+	 		</processor-mapping> 	 		
+	 		
+	 		
+	 		
+		</protocol-processors>
+	</protocols>
+	
+	<resources>
+		<class-resource name="chargeCode" parameter="com.snail.webgame.game.util.ChargeHandleStr"/>
+		<class-resource name="flashCode" parameter="com.snail.webgame.game.util.FlashHandleStr"/>
+		<message-resource key="list" parameter="/config/listserver.properties"/>
+	
+	</resources>
+</config>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	
+<!-- 整个消息的长度是4个字节是Int型 length表示该字段后的消息长度 -->
+<!-- 协议长度的 length的字节型必须注明 0(big-endian) 1(little-endian),不可缺少-->
+<!-- 协议头中必须存在 协议标识 -->
+<!-- 设置消息头协议字段顺序中,必须有一个字段是Length 如果没有协议字段顺序,length从第0个索引开始 -->
+<!-- 当消息头中的class不存在时,消息将转入<accept-handle>的配置类或者默认类处理-->
+<!-- 当消息不存在消息头时,<filter>将失效,必须配置<accept-handle>-->
+	<protocols>
+		<head class="com.snail.webgame.engine.component.mail.common.GameMessageHead" length-endian="0" name="MailServer"></head>
+		 
+	 	<protocol-processors>
+	 		 
+			<!-- 游戏服务器间连接维护 -->
+			<processor-mapping>
+				<protocolId>0xfffE</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.server.active.ServerActiveReq</message-body>
+				<processor value="com.snail.webgame.engine.component.mail.protocal.server.active.ServerActiveProcessor">
+					<property name="serverActiveService" value="com.snail.webgame.engine.component.mail.protocal.server.service.ServerActiveService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+			
+			<!-- 用户登录 -->
+			 <processor-mapping>
+				<protocolId>0xA006</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.rolemgt.login.UserLoginResp</message-body>
+				<processor value="com.snail.webgame.engine.component.mail.protocal.rolemgt.login.UserLoginProcessor">
+					<property name="roleMgtService" value="com.snail.webgame.engine.component.mail.protocal.rolemgt.service.RoleMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>		
+			 		
+			 <!-- 用户退出 -->
+			 <processor-mapping>
+				<protocolId>0xA010</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.rolemgt.logout.UserLogoutResp</message-body>
+				<processor value="com.snail.webgame.engine.component.mail.protocal.rolemgt.logout.UserLogoutProcessor">
+					<property name="roleMgtService" value="com.snail.webgame.engine.component.mail.protocal.rolemgt.service.RoleMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>
+			
+			<!-- 聊天 -->
+			<processor-mapping>
+				<protocolId>0xD003</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.chat.chat.ChatReq</message-body>
+				<processor value="com.snail.webgame.engine.component.mail.protocal.chat.chat.ChatProcessor">
+					<property name="chatMgtService" value="com.snail.webgame.engine.component.mail.protocal.chat.service.ChatMgtService"/>
+				</processor>
+				<usedTreadPool>webgame</usedTreadPool>
+			</processor-mapping>		
+			<processor-mapping>
+				<protocolId>0xD002</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.chat.chat.ChatResp</message-body>
+			</processor-mapping>
+			
+			
+			<!-- 监控词汇同步 -->
+<!-- 			<processor-mapping> -->
+<!-- 				<protocolId>0xD003</protocolId> -->
+<!-- 				<message-body>com.snail.webgame.engine.component.mail.protocal.chat.wordlist.SysWordListReq</message-body> -->
+<!-- 				<processor value="com.snail.webgame.engine.component.mail.protocal.chat.wordlist.SysWordListProcessor"> -->
+<!-- 					<property name="chatMgtService" value="com.snail.webgame.engine.component.mail.protocal.chat.service.ChatMgtService"/> -->
+<!-- 				</processor> -->
+<!-- 				<usedTreadPool>webgame</usedTreadPool> -->
+<!-- 			</processor-mapping> -->
+
+			<!-- 监控角色同步 -->
+<!-- 			<processor-mapping> -->
+<!-- 				<protocolId>0xD004</protocolId> -->
+<!-- 				<message-body>com.snail.webgame.engine.component.mail.protocal.chat.rolecount.SysRoleCountListReq</message-body> -->
+<!-- 				<processor value="com.snail.webgame.engine.component.mail.protocal.chat.rolecount.SysRoleCountListProcessor"> -->
+<!-- 					<property name="chatMgtService" value="com.snail.webgame.engine.component.mail.protocal.chat.service.ChatMgtService"/> -->
+<!-- 				</processor> -->
+<!-- 				<usedTreadPool>webgame</usedTreadPool> -->
+<!-- 			</processor-mapping> -->
+
+			<!-- 聊天禁言 -->
+<!-- 			<processor-mapping> -->
+<!-- 				<protocolId>0xD005</protocolId> -->
+<!-- 				<message-body>com.snail.webgame.engine.component.mail.protocal.chat.status.ChatStatusReq</message-body> -->
+<!-- 				<processor value="com.snail.webgame.engine.component.mail.protocal.chat.status.ChatStatusProcessor"> -->
+<!-- 					<property name="chatMgtService" value="com.snail.webgame.engine.component.mail.protocal.chat.service.ChatMgtService"/> -->
+<!-- 				</processor> -->
+<!-- 				<usedTreadPool>webgame</usedTreadPool> -->
+<!-- 			</processor-mapping> -->
+
+			 <!--发送邮件-->
+			<processor-mapping>
+				<protocolId>0xD006</protocolId><!--协议标识 -->
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailSend.SendReq</message-body><!-- 消息体对象类主体 -->
+				<processor value="com.snail.webgame.engine.component.mail.protocal.mail.mailSend.SendProcessor">
+					<property name="mailMgtService" value="com.snail.webgame.engine.component.mail.protocal.mail.service.MailMgtService"/>
+				</processor><!-- 协议处理类 -->
+				<usedTreadPool>webgame</usedTreadPool><!-- 使用线程池名 -->
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xD007</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailSend.SendResp</message-body>
+			</processor-mapping>
+	 		
+	 		<!--读取邮件-->
+			<processor-mapping>
+				<protocolId>0xD008</protocolId><!--协议标识 -->
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailRead.ReadMailReq</message-body><!-- 消息体对象类主体 -->
+				<processor value="com.snail.webgame.engine.component.mail.protocal.mail.mailRead.ReadProcessor">
+					<property name="mailMgtService" value="com.snail.webgame.engine.component.mail.protocal.mail.service.MailMgtService"/>
+				</processor><!-- 协议处理类 -->
+				<usedTreadPool>webgame</usedTreadPool><!-- 使用线程池名 -->
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xD009</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailRead.ReadMailResp</message-body>
+			</processor-mapping>
+			
+	 		<!--删除邮件-->
+			<processor-mapping>
+				<protocolId>0xD010</protocolId><!--协议标识 -->
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailDelete.DeleteReq</message-body><!-- 消息体对象类主体 -->
+				<processor value="com.snail.webgame.engine.component.mail.protocal.mail.mailDelete.DeleteProcessor">
+					<property name="mailMgtService" value="com.snail.webgame.engine.component.mail.protocal.mail.service.MailMgtService"/>
+				</processor><!-- 协议处理类 -->
+				<usedTreadPool>webgame</usedTreadPool><!-- 使用线程池名 -->
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xD011</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.mailDelete.DeleteResp</message-body>
+			</processor-mapping>
+	 		
+	 		<!--获取邮件列表 -->
+			<processor-mapping>
+				<protocolId>0xD012</protocolId><!--协议标识 -->]
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.allMailList.ListReq</message-body>
+				<processor value="com.snail.webgame.engine.component.mail.protocal.mail.allMailList.ListProcessor">
+					<property name="mailMgtService" value="com.snail.webgame.engine.component.mail.protocal.mail.service.MailMgtService"/>
+				</processor><!-- 协议处理类 -->
+				<usedTreadPool>webgame</usedTreadPool><!-- 使用线程池名 -->
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xD013</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.allMailList.ListResp</message-body>
+			</processor-mapping>
+			
+  			<!--设置邮件全部已读 -->
+			<processor-mapping>
+				<protocolId>0xD014</protocolId><!--协议标识 -->
+				<processor value="com.snail.webgame.engine.component.mail.protocal.mail.allMailRead.AllMailReadProcessor">
+					<property name="mailMgtService" value="com.snail.webgame.engine.component.mail.protocal.mail.service.MailMgtService"/>
+				</processor><!-- 协议处理类 -->
+				<usedTreadPool>webgame</usedTreadPool><!-- 使用线程池名 -->
+			</processor-mapping>
+			<processor-mapping>
+				<protocolId>0xD015</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.allMailRead.AllMailReadResp</message-body>
+			</processor-mapping>	
+			
+ 			<!--邮件提醒 -->
+			<processor-mapping>
+				<protocolId>0xD016</protocolId>
+				<message-body>com.snail.webgame.engine.component.mail.protocal.mail.remind.MailRemindResp</message-body>
+			</processor-mapping>
+						 		
+		</protocol-processors>
+	</protocols>
+	
+	<resources>
+		<class-resource name="flashCode" parameter="com.snail.webgame.engine.component.mail.util.FlashHandleStr"/>
+		<message-resource key="mail" parameter="/config/mailserver.properties"/>
+	</resources>
+</config>

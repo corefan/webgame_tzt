@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<server-name>EngineSceneServer</server-name>
+  <refresh-radii-x>12</refresh-radii-x>
+  <refresh-radii-y>5</refresh-radii-y>
+  <refresh-radii-z>12</refresh-radii-z>
+  <map-path>/config/map/</map-path>
+  <log4j-path>/config/log4j.properties</log4j-path>
+</config>

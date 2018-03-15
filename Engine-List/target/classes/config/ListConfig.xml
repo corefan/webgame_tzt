@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<lists>   
+ <list>
+ 	<name>帝国霸业开发测试版</name>
+ 	<server-id>1202</server-id><!-- 分区ID -->
+ 	<online-num>6000</online-num><!-- 同时在线最大人数 -->
+ </list> 
+
+ <list>
+ 	<name>帝国霸业发布版</name>
+ 	<server-id>1203</server-id><!-- 分区ID -->
+ 	<online-num>6000</online-num><!-- 同时在线最大人数 -->
+ </list> 
+ 	<!-- flash用的策略文件 -->
+	<flash-domain>
+		<domain>*</domain>
+		<port>*</port>
+	</flash-domain>
+</lists>
+

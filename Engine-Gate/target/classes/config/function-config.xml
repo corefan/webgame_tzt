@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<webgame>
+ 
+	
+	<!-- 对于游戏客户端发送的不同消息转发向不同服务器-->
+	<message-transmit>
+
+		<message> 
+			<serverName>SceneServer</serverName> 
+			<msgType>0xff04</msgType>
+			<msgType>0xff06</msgType>
+			<msgType>0xB001</msgType>
+			<msgType>0xB005</msgType>
+			<msgType>0xB010</msgType>
+			<msgType>0xB020</msgType>
+			<msgType>0xB022</msgType>
+			<msgType>0xB024</msgType>
+			<msgType>0xB026</msgType>
+			<msgType>0xB029</msgType>
+			
+			<msgType>0xC001</msgType>
+			<msgType>0xC003</msgType>
+			<msgType>0xC004</msgType>
+			<msgType>0xC005</msgType>
+			<msgType>0xC021</msgType>
+			<msgType>0xC023</msgType>
+			<msgType>0xC024</msgType>
+			<msgType>0xC025</msgType>
+			
+			<msgType>0xC041</msgType>
+			<msgType>0xC043</msgType>
+			<msgType>0xC045</msgType>
+			
+			<msgType>0xC101</msgType>
+			<msgType>0xC103</msgType>
+			<msgType>0xC105</msgType>
+			<msgType>0xC107</msgType>
+			
+			<msgType>0xC121</msgType>
+			
+			<msgType>0xD001</msgType>
+			<msgType>0xD017</msgType>
+			
+			<msgType>0xE001</msgType>
+			<msgType>0xE003</msgType>
+			<msgType>0xE005</msgType>
+			
+		</message>
+		
+		<message> 
+			<serverName>GameServer</serverName> 
+			<msgType>0xff02</msgType>
+			<msgType>0xA001</msgType>
+			<msgType>0xA003</msgType>
+			<msgType>0xA005</msgType>
+			<msgType>0xA007</msgType>
+			<msgType>0xA009</msgType>
+			<msgType>0xA011</msgType>
+			<msgType>0xA013</msgType>
+			<msgType>0xA015</msgType>
+			
+		</message>
+		
+		<message> 
+			<serverName>MailServer</serverName> 
+			<msgType>0xD006</msgType>
+			<msgType>0xD008</msgType>
+			<msgType>0xD010</msgType>
+			<msgType>0xD012</msgType>
+			<msgType>0xD014</msgType>
+		</message>
+  
+	</message-transmit>
+</webgame>

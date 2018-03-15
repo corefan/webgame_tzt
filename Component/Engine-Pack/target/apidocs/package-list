@@ -1,0 +1,15 @@
+com.snail.webgame.engine.component.pack.core
+com.snail.webgame.engine.component.pack.dao
+com.snail.webgame.engine.component.pack.protocol.pack
+com.snail.webgame.engine.component.pack.protocol.pack.arrange
+com.snail.webgame.engine.component.pack.protocol.pack.del
+com.snail.webgame.engine.component.pack.protocol.pack.delrel
+com.snail.webgame.engine.component.pack.protocol.pack.exchange
+com.snail.webgame.engine.component.pack.protocol.pack.load
+com.snail.webgame.engine.component.pack.protocol.pack.service
+com.snail.webgame.engine.component.pack.protocol.quickbar
+com.snail.webgame.engine.component.pack.protocol.quickbar.add
+com.snail.webgame.engine.component.pack.protocol.quickbar.del
+com.snail.webgame.engine.component.pack.protocol.quickbar.exchange
+com.snail.webgame.engine.component.pack.protocol.quickbar.load
+com.snail.webgame.engine.component.pack.protocol.quickbar.service

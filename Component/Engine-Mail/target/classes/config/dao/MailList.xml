@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.snail.webgame.engine.component.mail.dao">
+	
+	<resultMap id="mailResultMap" type="com.snail.webgame.engine.component.mail.common.MailInfo">
+		<id property="id" column="N_ID" />
+		<result property="mailType" column="N_TYPE"/>
+		<result property="sendRoleId" column="N_SEND_ID"/>
+		<result property="sendRoleName" column="S_SEND_NAME"/>
+		<result property="receRoleId" column="N_REC_ID"/>
+		<result property="receRoleName" column="S_REC_NAME"/>
+		<result property="mailTitle" column="S_TITLE"/>
+		<result property="content" column="S_CONTENT"/>
+		<result property="sendTime" column="D_CREATE"/>
+		<result property="readState" column="N_ISREAD"/>
+		<result property="subType" column="N_S_TYPE"/>
+		<result property="flag" column="N_FLAG"/>
+		<result property="attachment" column="S_ATTACHMENT"/>
+		<result property="reserve" column="S_RESERVE"/>
+		
+		
+	</resultMap>
+	
+	<select id="getMailInfoList" resultMap="mailResultMap">
+		select * from GAME_MAIL_LIST order by D_CREATE DESC
+	</select>
+	
+	<insert id="insertMail" parameterType="com.snail.webgame.engine.component.mail.common.MailInfo" 
+			useGeneratedKeys="true" keyProperty="id">
+		insert into GAME_MAIL_LIST(N_TYPE,N_SEND_ID,S_SEND_NAME,N_REC_ID,S_REC_NAME,S_TITLE,
+							S_CONTENT,D_CREATE,N_ISREAD,N_S_TYPE,
+							S_ATTACHMENT,S_RESERVE)
+		values(#{mailType},#{sendRoleId},#{sendRoleName},#{receRoleId},#{receRoleName},#{mailTitle},
+		#{content},#{sendTime},#{readState},#{subType},#{attachment},#{reserve})
+	</insert>
+	<delete id="deleteMail" parameterType="com.snail.webgame.engine.component.mail.common.MailInfo">
+		delete from GAME_MAIL_LIST where N_ID = #{id}
+	</delete>
+	
+	<update id="updateMailIsRead" parameterType="com.snail.webgame.engine.component.mail.common.MailInfo" >
+		update GAME_MAIL_LIST set N_ISREAD = #{readState} where N_ID = #{id}
+	</update>
+</mapper>

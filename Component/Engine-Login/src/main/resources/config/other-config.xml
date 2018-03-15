@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <validate-flag>1</validate-flag><!--游戏是否验证 0-不验证 1-验证-->
+  <indulgePrompt-flag>3</indulgePrompt-flag><!--防沉迷 0-关闭防沉迷 1-资源变化 2-假防沉迷 3-国内防沉迷 -->
+  <indulgePrompt-time>60</indulgePrompt-time><!--防沉迷刷新间隔 单位 秒 -->
+  <world-type>1</world-type><!-- 聊天字类型 1-中国 2-北美-->
+  <online-num>5000</online-num><!--同时在线最大人数 默认-1不做限制 -->
+  <login-freq><!--玩家登录频率控制，每隔多长时间允许登录几个人 -->
+	<time>0</time><!--玩家登陆间隔单位（毫秒）小于100不做限制-->
+	<num>0</num><!--玩家登陆间隔数量默认0不做限制 -->
+  </login-freq>
+  <gate-server-name>GateServer</gate-server-name>
+ </config>

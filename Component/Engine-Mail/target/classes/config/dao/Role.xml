@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.snail.webgame.engine.component.mail.dao">
+	
+	<resultMap id="roleResultMap" type="com.snail.webgame.demo.common.info.RoleInfo">
+		<id property="id" column="N_ID" />
+		<result property="account" column="S_CREATE_ACC"/>
+		<result property="sceneId" column="N_SCENE_ID"/>
+		<result property="roleName" column="S_ROLE_NAME"/>
+		
+	</resultMap>
+	
+	<select id="selectRoleByRoleName" parameterType="com.snail.webgame.demo.common.info.RoleInfo" resultMap="roleResultMap">
+		SELECT *
+		FROM GAME_ROLE
+		WHERE S_ROLE_NAME = #{roleName}
+	</select>
+	
+</mapper>

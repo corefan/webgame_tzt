@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webgame>
+	<license-path>/config/Gate.license</license-path>
+	<log4j-path>/config/log4j.properties</log4j-path>
+	<game-server-id>1203</game-server-id>
+	<encrypt-type>0</encrypt-type><!-- type 1:DES 2:BlowFish 3:DESede 4:AES 加密key是随机的 -->
+	<defense-flag>1</defense-flag><!--0-不启动防御 1-启动防御 -->
+	<local-server>
+		<gate-server-id>1</gate-server-id><!-- 连接服务器ID -->
+		<local-ip>172.19.10.157</local-ip><!-- 本地监听IP -->
+		<local-port>80</local-port><!-- 本地监听端口 -->
+		<remote-ip>172.19.10.26</remote-ip><!-- 外网监听IP -->
+		<remote-port>80</remote-port><!-- 外网监听端口 -->
+	</local-server>
+	
+	<conncet-server>
+		
+		<server> 
+			<name>GameServer</name> 
+			<ip>172.19.10.157</ip> 
+			<port>7001</port>
+		</server>
+		<server> 
+			<name>SceneServer-1</name> 
+			<ip>172.19.10.157</ip> 
+			<port>7002</port>
+		</server>
+		<server> 
+			<name>SceneServer-2</name> 
+			<ip>172.19.10.157</ip> 
+			<port>7003</port>
+		</server>
+		
+		<server> 
+			<name>MailServer</name> 
+			<ip>172.19.10.157</ip> 
+			<port>7006</port>
+		</server>
+ 
+
+	</conncet-server>
+	
+	<!-- flash用的策略文件 -->
+	<flash-domain>
+		<domain>*</domain>
+		<port>*</port>
+	</flash-domain>
+	
+	<!-- 通讯服务器监听 socket配置 -->
+	<socket-option>
+		<SocketReceiveBuffer>204800</SocketReceiveBuffer>
+		<SocketSendBuffer>204800</SocketSendBuffer>
+		<KeepAlive>true</KeepAlive>
+		<TcpNoDelay>false</TcpNoDelay>
+		<IdleTime><!-- session超时 -->
+			<state>3</state><!--0（不超时） 1(READER_IDLE),2(WRITER_IDLE),3(BOTH_IDLE) -->
+			<Timeout>60</Timeout><!--(秒)-->
+		</IdleTime>
+	</socket-option>
+	
+ 
+</webgame>

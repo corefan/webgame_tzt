@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="">
+	
+	<resultMap id="packResultMap" type="com.snail.webgame.engine.common.info.PackGirdInfo">
+		<id property="id" column="N_ID" />
+		<result property="girdNo" column="N_GIRD_NO"/>
+		<result property="itemSort" column="N_ITEM_SORT"/>
+		<result property="itemNo" column="N_ITEM_NO"/>
+		<result property="itemNum" column="N_ITME_NUM"/>
+		<result property="roleId" column="N_ROLE_ID"/>
+	</resultMap>
+	
+	<select id="selectAllPack" resultType="com.snail.webgame.engine.common.info.PackGirdInfo" 
+			resultMap="packResultMap">
+		select * from GAME_ITEM_PACK
+	</select>
+
+	<select id="selectPackByRoleId" parameterType="com.snail.webgame.engine.common.info.PackGirdInfo" 
+			resultType="com.snail.webgame.engine.common.info.PackGirdInfo" resultMap="packResultMap">
+		select * from GAME_ITEM_PACK where N_ROLE_ID = #{roleId}
+	</select>
+	
+	<insert id="insertPack" parameterType="com.snail.webgame.engine.common.info.PackGirdInfo" 
+			useGeneratedKeys="true" keyProperty="id">
+		insert into GAME_ITEM_PACK(N_GIRD_NO, N_ITEM_SORT, N_ITEM_NO, N_ITME_NUM, N_ROLE_ID) values(#{girdNo}, #{itemSort}, #{itemNo}, #{itemNum}, #{roleId});
+	</insert>
+	
+	<insert id="insertPackBatch" parameterType="java.util.List" 
+			useGeneratedKeys="true">
+  		insert into GAME_ITEM_PACK(N_GIRD_NO, N_ITEM_SORT, N_ITEM_NO, N_ITME_NUM, N_ROLE_ID) values
+  		<foreach collection="list" item="item" index="index" separator=",">
+  			( #{item.girdNo}, #{item.itemSort}, #{item.itemNo}, #{item.itemNum}, #{item.roleId})
+  		</foreach>
+  	</insert>
+	
+	<delete id="deletePackBatch" parameterType="java.util.List">
+  		delete from GAME_ITEM_PACK WHERE N_ID IN
+  		<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+  			#{item.id}
+  		</foreach>
+  	</delete>
+  	
+  	<update id="updatePack" parameterType="com.snail.webgame.engine.common.info.PackGirdInfo" >
+  		UPDATE GAME_ITEM_PACK SET 
+  			N_GIRD_NO = #{girdNo},
+  			N_ITEM_SORT = #{itemSort}, 
+  			N_ITEM_NO = #{itemNo}, 
+  			N_ITME_NUM = #{itemNum}, 
+  			N_ROLE_ID = #{roleId}
+  		WHERE N_ID = #{id}
+  	</update>
+	
+</mapper>

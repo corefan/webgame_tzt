@@ -1,0 +1,28 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.snail.webgame</groupId>
+		<artifactId>engine</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<groupId>com.snail.webgame.engine</groupId>
+	<artifactId>component</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<name>webgame 引擎通用构件</name>
+
+	<modules>
+		<module>Engine-Scene</module>
+		<module>Engine-Scene-RTS</module>
+		<module>Engine-Mail</module>
+		<module>Engine-Fight</module>
+		<module>Engine-Pack</module>
+		<module>Engine-Analyse</module>
+		<module>Engine-GMCC</module>
+		<module>Engine-Login</module>
+		<module>Engine-Monitor</module>
+	</modules>
+
+
+</project>
